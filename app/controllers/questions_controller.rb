@@ -1,10 +1,15 @@
 class QuestionsController < ApplicationController
   # 質問一覧表示
   def index
+    @questions = Question.all
+    # p @questions
   end
 
   # 室温詳細ページ表示
   def show
+    # p params[:id]
+    @question = Question.find(params[:id])
+    # p @question
   end
 
   # 質問の作成
@@ -17,9 +22,13 @@ class QuestionsController < ApplicationController
     # Questionモデルの初期化
     @question = Question.new(question_params)
     # QuestionモデルをDBへ保存
-    @question.save
-    # showへリダイレクト
-    redirect_to @question
+    if @question.save
+      # 質問の保存に成功したら、showへリダイレクト
+      redirect_to @question
+    else
+      # 保存前のバリデーションに失敗したら、question/newにエラーのハッシュを送る
+      render 'new', status: :unprocessable_entity
+    end
   end
 
   # 質問の編集

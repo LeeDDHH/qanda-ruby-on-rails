@@ -53,7 +53,7 @@ class QuestionsController < ApplicationController
       # 質問を削除する
       @question.destroy
       # 質問一覧画面にリダイレクトする
-      redirect_to @questions_path
+      redirect_to questions_path
   end
 
   private

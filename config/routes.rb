@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root "questions#index"
-  resources :questions
+  # 質問のルーティング設定
+  # 質問に紐づく回答のルーティング設定
+  resources :questions do
+    resources :answers
+  end
 end

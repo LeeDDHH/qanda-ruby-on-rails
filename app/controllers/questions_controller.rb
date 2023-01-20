@@ -48,6 +48,12 @@ class QuestionsController < ApplicationController
 
   # 質問の削除
   def destroy
+      # idパラメータから質問を特定する
+      @question = Question.find(params[:id])
+      # 質問を削除する
+      @question.destroy
+      # 質問一覧画面にリダイレクトする
+      redirect_to @questions_path
   end
 
   private

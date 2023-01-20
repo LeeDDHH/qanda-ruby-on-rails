@@ -9,12 +9,14 @@
   </tr>
   <% @questions.each do |question| %>
   <tr>
-    <th><%= question.id %></th>
-    <th><%= question.title %></th>
-    <th><%= question.name %></th>
-    <th><%= question.content %></th>
-    <th><%= link_to 'show', question_path(question) %></th>
-    <th><%= link_to 'edit', edit_question_path(question) %></th>
+    <td><%= question.id %></td>
+    <td><%= question.title %></td>
+    <td><%= question.name %></td>
+    <td><%= question.content %></td>
+    <td><%= link_to 'show', question_path(question) %></td>
+    <td><%= link_to 'edit', edit_question_path(question) %></td>
+    <td><%= link_to 'destroy', question_path(question),
+          data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' } %></td>
   </tr>
   <% end %>
 </table>

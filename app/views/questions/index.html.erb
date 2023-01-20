@@ -14,6 +14,7 @@
     <th><%= question.name %></th>
     <th><%= question.content %></th>
     <th><%= link_to 'show', question_path(question) %></th>
+    <th><%= link_to 'edit', edit_question_path(question) %></th>
   </tr>
   <% end %>
 </table>
